@@ -118,11 +118,7 @@ LOGGING.update(
                 "propagate": False,
             },
             "rules": {"handlers": ["console"], "level": "DEBUG", "propagate": True},
-            "orm_blog": {
-                "handlers": ["console"],
-                "level": "DEBUG",
-                "propagate": False,
-            },
+            "orm_blog": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
         }
     }
 )

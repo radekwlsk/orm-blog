@@ -9,18 +9,11 @@ class BlogPost(models.Model):
     created = models.DateTimeField(_("created at"), auto_now_add=True)
     posted = models.DateTimeField(_("posted at"), null=True, blank=True)
 
-    author = models.ForeignKey(
-        "Author",
-        on_delete=models.CASCADE,
-        related_name="posts",
-    )
+    author = models.ForeignKey("Author", on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(_("title"), max_length=256)
     body = models.TextField(_("body"))
     category = models.ForeignKey(
-        "Category",
-        on_delete=models.SET_NULL,
-        related_name="+",
-        null=True,
+        "Category", on_delete=models.SET_NULL, related_name="+", null=True
     )
 
     sponsored = models.BooleanField(_("sponsored"), default=False)
@@ -30,8 +23,8 @@ class BlogPost(models.Model):
 
 
 class Author(models.Model):
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=30, blank=True)
+    last_name = models.CharField(_("last name"), max_length=150, blank=True)
     website = models.URLField(_("website"), blank=True)
 
 
@@ -44,4 +37,6 @@ class Comment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
     text = models.TextField(_("comment text"), max_length=2000)
-    post = models.ForeignKey("BlogPost", on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(
+        "BlogPost", on_delete=models.CASCADE, related_name="comments"
+    )

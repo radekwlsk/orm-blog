@@ -50,15 +50,10 @@ DJANGO_APPS = [
     "django.contrib.admin",
 ]
 
-THIRD_PARTY_APPS = [
-    "corsheaders",
-]
+THIRD_PARTY_APPS = ["corsheaders"]
 
 # Apps specific for this project go here.
-LOCAL_APPS = [
-    "orm_blog.users.apps.UsersConfig",
-    "orm_blog.blog.apps.BlogConfig",
-]
+LOCAL_APPS = ["orm_blog.users.apps.UsersConfig", "orm_blog.blog.apps.BlogConfig"]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -271,9 +266,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-]
+AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.ModelBackend"]
 
 # Custom user app defaults
 # Select the correct user model
@@ -326,10 +319,7 @@ LOGGING = {
         }
     },
     "handlers": {
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-        },
+        "console": {"level": "DEBUG", "class": "logging.StreamHandler"},
         "django.server": {
             "level": "INFO",
             "class": "logging.StreamHandler",

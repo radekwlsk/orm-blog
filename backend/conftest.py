@@ -14,7 +14,6 @@ from faker import config
 from pytest_factoryboy import register
 from requests_mock import MockerCore
 
-
 config.DEFAULT_LOCALE = "pl_PL"
 register(UserFactory)
 
