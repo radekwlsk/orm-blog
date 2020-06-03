@@ -6,10 +6,54 @@ presentation](https://docs.google.com/presentation/d/1ApNBIzdBbAc9FTzeO2kGINDS5E
 
 ## How to use
 
-### Build
+Follow steps below and you will be ready to go.
+
+### Setup
 
 Application is dockerized, to run it make sure that you have 
 Docker and `docker-compose` installed and configured properly.
+
+It uses some environment variables loaded from `.envs/` directory,
+please create following file structure:
+```
+.envs
+└── .local
+    ├── .django
+    └──  .postgres
+```
+
+Add following minimal content to them:
+1. `.envs/.local/.django`
+```
+# PostgreSQL
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+CONN_MAX_AGE=60
+
+# General settings
+DJANGO_READ_DOT_ENV_FILE=False
+DJANGO_SETTINGS_MODULE=config.settings.local
+
+# Settings module for tests
+DJANGO_SETTINGS_MODULE_TEST=config.settings.test
+DJANGO_SECRET_KEY=gL/s)op}&Fky9*&B{p1^]ewfW~xsP.#DV+kDj{Ne>/Pv<kPVTU
+DJANGO_ALLOWED_HOSTS=*
+
+# Celery, Redis cache
+CELERY_BROKER_URL=redis://redis:6379
+REDIS_URL=redis://redis:6379
+CELERY_FLOWER_USER=flower_user
+CELERY_FLOWER_PASSWORD=flower_password
+```
+2. `.envs/.local/.postgres`
+```
+# PostgreSQL
+POSTGRES_DB=backend
+POSTGRES_USER=backend
+POSTGRES_PASSWORD=backend
+```
+
+### Build
 
 Run in projects root directory:
 ```bash
